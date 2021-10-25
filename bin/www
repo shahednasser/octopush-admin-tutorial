@@ -50,6 +50,7 @@ function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
   }
+  console.log(error);
 
   const bind = typeof port === 'string' ? `Pipe ${port}` : `Port ${port}`;
 

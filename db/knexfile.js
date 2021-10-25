@@ -1,3 +1,4 @@
+const path = require('path');
 require('dotenv').config({
   path: `../env-files/${process.env.NODE_ENV || 'development'}.env`,
 });
@@ -6,14 +7,8 @@ global.Promise = require('bluebird');
 // knexfile.js
 module.exports = {
   development: {
-    client: 'pg',
-    connection: process.env.DATABASE_URL || {
-      host: process.env.DATABASE_HOST,
-      port: process.env.DATABASE_PORT,
-      database: process.env.DATABASE_NAME,
-      user: process.env.DATABASE_USER,
-      password: process.env.DATABASE_PASSWORD,
-    },
+    client: 'sqlite3',
+    connection: path.join(__dirname, '../db.sqlite'),
     pool: {
       min: 2,
       max: 10,
@@ -25,6 +20,7 @@ module.exports = {
     seeds: {
       directory: './seeds',
     },
+    useNullAsDefault: true,
   },
 
   staging: {

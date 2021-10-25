@@ -92,7 +92,7 @@
                   <% } %>
                   <% if (locals.messages && messages.errors && messages.errors.databaseError) { %>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                      <%= messages.errors %>
+                      <%= messages.errors.databaseError %>
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">×</span>
                       </button>
@@ -114,6 +114,24 @@
                         <input type="email" id="input-email" class="form-control form-control-alternative" name="username" placeholder="jesse@example.com" value="<%= locals.userInfo && locals.userInfo.email %>">
                         <% if (locals.messages && messages.errors && messages.errors.username) { %>
                           <strong class="invalid-feedback" style="display: block"><%= messages.errors.username %></strong>
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-phone-number">Phone Number</label>
+                        <input type="tel" id="input-phone-number" class="form-control form-control-alternative" name="phone_number" value="<%= locals.userInfo && locals.userInfo.phone_number %>">
+                        <% if (locals.messages && messages.errors && messages.errors.phone_number) { %>
+                          <strong class="invalid-feedback" style="display: block"><%= messages.errors.phone_number %></strong>
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-reminder">Remind Me to Login</label>
+                        <input type="time" id="input-reminder" class="form-control form-control-alternative" name="reminder_at" value="<%= locals.userInfo && locals.userInfo.reminder_at %>">
+                        <% if (locals.messages && messages.errors && messages.errors.reminder_at) { %>
+                          <strong class="invalid-feedback" style="display: block"><%= messages.errors.reminder_at %></strong>
                         <% } %>
                       </div>
                     </div>

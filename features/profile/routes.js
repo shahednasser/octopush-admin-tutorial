@@ -6,9 +6,18 @@ const updateUserInfo = require('./commands/update-user-info');
 const loadPage = require('./commands/load-page');
 
 module.exports = (router, middlewares = []) => {
-  router.get('/profile', middlewares.map(middleware => wrap(middleware)), wrap(loadPage));
+  router.get(
+    '/profile',
+    middlewares.map(middleware => wrap(middleware)),
+    wrap(loadPage)
+  );
 
-  router.post('/update-profile-info', wrap(requestBodyValidation), wrap(updateUserInfo));
+  router.post(
+    '/update-profile-info',
+    middlewares.map(middleware => wrap(middleware)),
+    wrap(requestBodyValidation),
+    wrap(updateUserInfo)
+  );
 
   return router;
 };

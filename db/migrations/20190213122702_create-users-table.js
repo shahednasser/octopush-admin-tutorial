@@ -19,6 +19,8 @@ exports.up = async function up(knex) {
       .defaultTo(knex.fn.now());
 
     table.unique('email');
+    table.string('reminder_at').nullable();
+    table.string('phone_number').nullable();
   });
 };
 

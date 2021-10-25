@@ -10,6 +10,8 @@ const schema = Joi.object().keys({
     .max(NAME_MAX)
     .required(),
   username: Joi.string().email({ minDomainAtoms: 2 }),
+  reminder_at: Joi.string().regex(new RegExp(/^[0-2][0-9]:[0-5][0-9]$/)),
+  phone_number: Joi.string().regex(new RegExp(/^\+[0-9]{8,}/)),
 });
 
 async function validateRegisterPayload(req, res, next) {
